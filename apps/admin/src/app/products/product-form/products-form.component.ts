@@ -4,21 +4,25 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesService, ProductsService } from '@tejb/products';
+import {  CategoriesService, Product, ProductsService } from '@tejb/products';
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'admin-products-form',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'tejb-products-form',
   templateUrl: './products-form.component.html',
-  styleUrls: ['./products-form.component.css']
+  styleUrls: ['./products-form.component.css'],
 })
 export class ProductsFormComponent implements OnInit {
-  editmode = false;
   form: FormGroup;
   isSubmitted = false;
-  catagories = [];
-  imageDisplay: string | ArrayBuffer;
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+  created: boolean = false;
+  updated = false;
+  editmode = false;
   currentProductId: string;
+  categories= [];
+  imageDisplay: string | ArrayBuffer;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,99 +34,88 @@ export class ProductsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this._initForm();
-    // this._getCategories();
+    this._getCategories();
     this._checkEditMode();
-  }
-
-  private _initForm() {
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      brand: ['', Validators.required],
-      price: ['', Validators.required],
-      category: [''],
-      countInStock: ['', Validators.required],
-      description: ['', Validators.required],
-      richDescription: [''],
-      image: ['', Validators.required],
-      isFeatured: [false]
-    });
-  }
-
-  // private _getCategories() {
-  //   this.categoriesService.getCategories().subscribe((categories) => {
-  //     this.catagories = categories;
-  //   });
-  // }
-
-  private _addProduct(productData: FormData) {
-    this.productsService.createProduct(productData).subscribe()
-    ;
-  }
-
-  // private _updateProduct(productFormData: FormData) {
-  //   this.productsService.updateProduct(productFormData, this.currentProductId).subscribe(
-  //     () => {
-  //       this.messageService.add({
-  //         severity: 'success',
-  //         summary: 'Success',
-  //         detail: 'Product is updated!'
-  //       });
-  //       timer(2000)
-  //         .toPromise()
-  //         .then(() => {
-  //           this.location.back();
-  //         });
-  //     },
-  //     () => {
-  //       this.messageService.add({
-  //         severity: 'error',
-  //         summary: 'Error',
-  //         detail: 'Product is not updated!'
-  //       });
-  //     }
-  //   );
-  // }
-
-  private _checkEditMode() {
-    this.route.params.subscribe((params) => {
-      if (params.id) {
-        this.editmode = true;
-        this.currentProductId = params.id;
-        this.productsService.getProduct(params.id).subscribe((product) => {
-          this.productForm.name.setValue(product.name);
-          this.productForm.category.setValue(product.category.id);
-          this.productForm.brand.setValue(product.brand);
-          this.productForm.price.setValue(product.price);
-          this.productForm.countInStock.setValue(product.countInStock);
-          this.productForm.isFeatured.setValue(product.isFeatured);
-          this.productForm.description.setValue(product.description);
-          this.productForm.richDescription.setValue(product.richDescription);
-          this.imageDisplay = product.image;
-          this.productForm.image.setValidators([]);
-          this.productForm.image.updateValueAndValidity();
+    }
+    private _initForm(){
+      this.form = this.formBuilder.group({
+        name: ['', Validators.required],
+        //brand: ['', Validators.required],
+        price: ['', Validators.required],
+        category: ['', Validators.required],
+        countInStock: ['', Validators.required],
+        description: ['', Validators.required],
+        richDescription: [''],
+        image: ['', Validators.required],
+        isFeatured: [false]
+      })
+    }
+    private _getCategories(){
+      this.categoriesService.getCategories().subscribe(categories =>{
+        this.categories= categories;
+      })
+    }
+    private _addProduct(productData: FormData){
+      this.productsService.createProduct(productData).subscribe();
+      this.created = true;
+      timer(2000)
+        .toPromise()
+        .then((_done) => {
+          this.location.back();
         });
-      }
-    });
-  }
+    }
+    private _updateProduct(productFormData: FormData){
+      this.productsService.updateProduct(productFormData, this.currentProductId).subscribe();
+      this.updated = true;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      timer(2000)
+        .toPromise()
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .then((_done) => {
+          this.location.back();
+        });
+    }
+    private _checkEditMode() {
+      this.route.params.subscribe((params) => {
+        if (params.id) {
+          this.editmode = true;
+          this.currentProductId = params.id;
+          this.productsService.getProduct(params.id).subscribe((product) => {
+            this.productform.name.setValue(product.name);
+            this.productform.category.setValue(product.category.id);
+            this.productform.brand.setValue(product.brand);
+            this.productform.price.setValue(product.price);
+            this.productform.countInStock.setValue(product.countInStock);
+            this.productform.isFeatured.setValue(product.isFeatured);
+            this.productform.description.setValue(product.description);
+            this.productform.richDescription.setValue(product.richDescription);
+            this.imageDisplay = product.image;
+            this.productform.image.setValidators([]);
+            this.productform.image.updateValueAndValidity();
+          });
+        }
+      });
+  
+    }
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.form.invalid) return;
-
+    if (this.form.invalid) 
+      return;
     const productFormData = new FormData();
-    Object.keys(this.productForm).map((key) => {
-      // productFormData.append(key, this.productForm[key].value);
-      console.log(key);
-      console.log(this.productForm[key].value);
+    Object.keys(this.productform).map((key)=>{
+      productFormData.append(key,this.productform[key].value);
     });
-    // if (this.editmode) {
-    //   this._updateProduct(productFormData);
-    // } else {
-    //   this._addProduct(productFormData);
-    // }
+    if(this.editmode){
+      this._updateProduct(productFormData)
+    }else{
+      this._addProduct(productFormData)
+    }
+    
   }
-  onCancle() {}
-
+  onCancel() {
+    this.location.back();
+  }
   onImageUpload(event) {
     const file = event.target.files[0];
     if (file) {
@@ -135,8 +128,7 @@ export class ProductsFormComponent implements OnInit {
       fileReader.readAsDataURL(file);
     }
   }
-
-  get productForm() {
+  get productform() {
     return this.form.controls;
   }
 }

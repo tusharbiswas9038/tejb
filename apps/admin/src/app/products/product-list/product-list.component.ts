@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from '@tejb/products';
+import { Product, ProductsService } from '@tejb/products';
 
 @Component({
   selector: 'admin-products-list',
@@ -8,7 +8,7 @@ import { ProductsService } from '@tejb/products';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  products = [];
+  products: Product [] =[];
 
   constructor(
     private productsService: ProductsService,
@@ -20,11 +20,7 @@ export class ProductsListComponent implements OnInit {
     this._getProducts();
   }
 
-  private _getProducts() {
-    this.productsService.getProducts().subscribe((products) => {
-      this.products = products;
-    });
-  }
+ 
 
   updateProduct(productid: string) {
     this.router.navigateByUrl(`products/form/${productid}`);
@@ -35,6 +31,12 @@ export class ProductsListComponent implements OnInit {
     this. _getProducts()
     )
 
-  };
+  }
+
+  private _getProducts() {
+    this.productsService.getProducts().subscribe((products) => {
+      this.products = products;
+    });
+  }
 
 }

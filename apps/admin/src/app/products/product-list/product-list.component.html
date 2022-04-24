@@ -1,50 +1,64 @@
 <div class="admin-main">
   <div class="container">
-      <div class="card">
-        <h4 class="card-header">Add a product</h4>
-        <div class="card-body">
-          <h5 class="card-title">You can add or edit products here</h5>
-          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group me-2" role="group" aria-label="First group">
-              <button type="button" class="btn btn-primary" routerLink="form">New</button>
-            </div>
-            </div>
+    <div class="card">
+      <h4 class="card-header">Add a product</h4>
+      <div class="card-body">
+        <h5 class="card-title">You can add or edit products here</h5>
+        <div
+          class="btn-toolbar"
+          role="toolbar"
+          aria-label="Toolbar with button groups"
+        >
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary" routerLink="form">
+              <i class="bi bi-plus-circle-dotted"></i>New
+            </button>
+          </div>
         </div>
       </div>
-      <div class="container">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Image</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Category</th>
-              <th scope="col">Created at</th>
-              <th scope="col"></th>
-
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr *ngFor="let pr of products" >
-              <td>{{pr.name}}</td>
-              <td>{{pr.price}}</td>
-              <td><img [src]="pr.image" style="width:fit-content" alt="" /></td>
-              <td>{{pr.countInStock}}</td>
-              <td>{{pr.category}}</td>
-               <td>{{pr.dateCreated | date:'short'}}</td>
-
-               <td>
-                <button (click)="deleteProduct(pr.id)" type="button" class="btn btn-danger">Delete</button>
-                <button (click)="updateProduct(pr.id)" type="button" class="btn btn-primary">Edit</button></td>
-              </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      </div>
-      </div>
+    </div>
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">Image</th>
+            <th scope="col">Count in stock</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date created</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of products">
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.category.name }}</td>
+            <td style="100%"><img [src]=" item.image " style="width:20%"alt=""></td>
+            <td>{{ item.countinstock }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.datecreated | date:'short' }}</td>
+            <td>
+              <button
+                (click)="deleteProduct(item.id)"
+                type="button"
+                class="btn btn-danger"
+              >
+                <i class="bi bi-trash3-fill"></i>
+              </button>
+              <button
+                (click)="updateProduct(item.id)"
+                type="button"
+                class="btn btn-primary"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
