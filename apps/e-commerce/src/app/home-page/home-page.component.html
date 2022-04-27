@@ -1,49 +1,178 @@
-
-<p>home-page works!</p>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+<!-- offer banner -->
+<div
+id="carouselExampleSlidesOnly"
+class="carousel slide"
+data-bs-ride="carousel"
+>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <h3
+      class="d-block w-100 d-flex justify-content-center bg-danger py-2 my-0"
+    >
+      Apply promocode to get 20% discount
+    </h3>
   </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <div class="carousel-item">
+    <h3
+      class="d-block w-100 d-flex justify-content-center bg-danger py-2 my-0"
+    >
+      Sale starts tonight!!!
+    </h3>
   </div>
-  <button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
+  <div class="carousel-item">
+    <h3
+      class="d-block w-100 d-flex justify-content-center bg-danger py-2 my-0"
+    >
+      Buy one laptop and get Accessories free
+    </h3>
+  </div>
+</div>
+</div>
+<!-- photoslide banner -->
+<div
+id="carouselExampleCaptions"
+class="carousel slide "
+data-bs-ride="carousel"
+>
+<div class="carousel-indicators">
+  <button
+    type="button"
+    data-bs-target="#carouselExampleCaptions"
+    data-bs-slide-to="0"
+    class="active"
+    aria-current="true"
+    aria-label="Slide 1"
+  ></button>
+  <button
+    type="button"
+    data-bs-target="#carouselExampleCaptions"
+    data-bs-slide-to="1"
+    aria-label="Slide 2"
+  ></button>
+  <button
+    type="button"
+    data-bs-target="#carouselExampleCaptions"
+    data-bs-slide-to="2"
+    aria-label="Slide 3"
+  ></button>
+</div>
+<div class="carousel-inner">
+  <div class="carousel-item active" data-bs-interval="3000">
+    <img
+      src="/assets/images/p1.jfif"
+      class="d-block w-100 py-0"
+      style="height: 500px"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>First slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+      <button type="button">
+        <a href="#" class="btn btn-primary">BUY NOW</a>
+      </button>
+    </div>
+  </div>
+  <div class="carousel-item" data-bs-interval="3000">
+    <img
+      src="/assets/images/p2.jfif"
+      class="d-block w-100"
+      style="height: 500px"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Second slide label</h5>
+      <p>Some representative placeholder content for the second slide.</p>
+      <button type="button">
+        <a href="#" class="btn btn-primary">BUY NOW</a>
+      </button>
+    </div>
+  </div>
+  <div class="carousel-item" data-bs-interval="3000">
+    <img
+      src="/assets/images/p3.jfif"
+      class="d-block w-100"
+      style="height: 500px"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Third slide label</h5>
+      <p>Some representative placeholder content for the third slide.</p>
+      <button type="button">
+        <a href="#" class="btn btn-primary">BUY NOW</a>
+      </button>
+    </div>
+  </div>
+</div>
+<button
+  class="carousel-control-prev"
+  type="button"
+  data-bs-target="#carouselExampleCaptions"
+  data-bs-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button
+  class="carousel-control-next"
+  type="button"
+  data-bs-target="#carouselExampleCaptions"
+  data-bs-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+<!-- cutom pc -->
+<div class="card mb-0 bg-black" style="max-width: 100%;box-shadow: 0px 8px 16px 4px rgba(0, 0, 0, 0.2);">
+<div class="row g-0 my-0 py-0 h-100">
+  <div class="col-md-4 my-2">
+    <img src="/assets/images/p4.jfif" class="img-fluid h-100 my-0" alt="..." />
+  </div>
+  <div class="col-md-6 bg-transparent">
+    <div class="card-body my-0 ">
+      <h5 style="color: aquamarine;padding:2px;">Ready,Set,Build!</h5>
+      <p style="color: cornsilk; padding: 2px;">
+        Choose from our range of high performance PC's for your gaming,
+        content creation or research needs. Nothing quite fits? Build your
+        very own custom machine with our Custom PC Configurator or choose
+        a liquid cooling monster. Here at theMVP.in believe that model
+        numbers should never hold you back Customize everything - Build
+        your dream PC with us today!
+      </p>
+      <button type="button" class="btn btn-danger my-0 p-2">Customize</button>
+      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+    </div>
+  </div>
+</div>
+</div>
 
-<button type="button" class="btn btn-link">Link</button>
+
+<!-- For Laptops -->
+
+<div class="card bg-dark text-white d-flex w-50" style="box-shadow: 3pxpx 8px 16px 4pxpx rgba(0, 0, 0, 0.2);">
+<img src="/assets/images/p5.jpg" class="card-img h-100" alt="...">
+<div class="card-img-overlay my-5">
+  <h5 class="card-title">A MONSTER OF A LAPTOP</h5>
+  <p class="card-text" style="margin-top: 40px;
+  margin-right: 327px;">Tech Power Up Gives EON17-X Their Editor's Choice Award!
+    “The Origin PC EON17-X is a monster of a laptop stuffed full of some of the fastest hardware you can get. There's a lot here to like, and like it I do.”
+    - TechPowerUp</p>
+    <button type="button" class="btn btn-outline-light">SHOP NOW</button>
+
+</div>
+</div>
+
+
+<div class="let_us_know py-2" style="transition: transform 2s ease, opacity .5s ease-out">
+<div>
+  <h3 class="my-0 ps-82">Let Us Know..</h3>
+  <br />
+  <p>Consult with us, check stock and place the order.</p>
+  <br />
+  <button class="btn btn-outline-danger ms-116">Contact Us</button>
+</div>
+</div>
+
+
+
+

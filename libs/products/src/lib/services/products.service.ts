@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { Product } from '../model/product';
@@ -13,8 +13,12 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiURLProducts);
+  getProducts(selected?:string[]): Observable<Product[]> {
+    let params= new HttpParams();
+    if(selected){
+      params= params.append('categories',selected.join(','));
+    }
+    return this.http.get<Product[]>(this.apiURLProducts, {params:params});
   }
 
   createProduct(productData: FormData): Observable<Product> {
