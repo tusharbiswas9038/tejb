@@ -17,7 +17,10 @@
           "apps/e-commerce/src/favicon.ico",
           "apps/e-commerce/src/assets"
         ],
-        "styles": ["apps/e-commerce/src/styles.css"],
+        "styles": ["node_modules/bootstrap/dist/css/bootstrap.css",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+          "apps/e-commerce/src/styles.css"],
         "scripts": ["node_modules/bootstrap/dist/js/bootstrap.js",
           "node_modules/bootstrap/dist/js/bootstrap.min.js",
           "node_modules/jquery/dist/jquery.min.js",
