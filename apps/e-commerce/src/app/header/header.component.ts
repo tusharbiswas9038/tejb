@@ -26,6 +26,6 @@ cons(){
       document.getElementById("inPut").style.visibility = "visible";
     }
   
-  console.log(this.press);
+  
 }
 }

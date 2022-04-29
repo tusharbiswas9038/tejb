@@ -121,3 +121,12 @@
   box-shadow: none;
   color:  rgb(23, 241, 114);
 }
+#hover:hover{
+  border: green solid 5px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.adjust-width a{
+  text-decoration: none;
+
+}
