@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {  CategoriesService, Product, ProductsService } from '@tejb/products';
 import { timer } from 'rxjs';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -23,6 +24,31 @@ export class ProductsFormComponent implements OnInit {
   currentProductId: string;
   categories= [];
   imageDisplay: string | ArrayBuffer;
+
+  
+  name = 'Angular 6';
+  htmlContent = '';
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '10rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text in this rich text editor....',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    customClasses: [
+      {
+        name: 'Quote',
+        class: 'quoteClass',
+      },
+      {
+        name: 'Title Heading',
+        class: 'titleHead',
+        tag: 'h1',
+      },
+    ],
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -131,4 +157,10 @@ export class ProductsFormComponent implements OnInit {
   get productform() {
     return this.form.controls;
   }
+
+
+  
+
+
+
 }

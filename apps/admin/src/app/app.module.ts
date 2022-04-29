@@ -20,6 +20,8 @@ import { UsersService } from '@tejb/users';
 import { UsersFormComponent } from './users/users-form/users-form.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './orders/orders-details/orders-details.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 const routes: Routes = [
   {
     path: '',
@@ -96,6 +98,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    AngularEditorModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
   ],
