@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { UsersFormComponent } from './users/users-form/users-form.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './orders/orders-details/orders-details.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 const routes: Routes = [
   {
@@ -96,13 +98,14 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     AngularEditorModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
   ],
-  providers: [CategoriesService, UsersService],
+  providers: [CategoriesService, UsersService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
