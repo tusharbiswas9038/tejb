@@ -109,7 +109,7 @@ export class ProductsFormComponent implements OnInit {
           this.productsService.getProduct(params.id).subscribe((product) => {
             this.productform.name.setValue(product.name);
             this.productform.category.setValue(product.category.id);
-            this.productform.brand.setValue(product.brand);
+            //this.productform.brand.setValue(product.brand);
             this.productform.price.setValue(product.price);
             this.productform.countInStock.setValue(product.countInStock);
             this.productform.isFeatured.setValue(product.isFeatured);
