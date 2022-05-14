@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
@@ -17,17 +17,21 @@ import { CategoriesService } from '@tejb/products';
 import { ProductsListComponent } from './products/product-list/product-list.component';
 import { ProductsFormComponent } from './products/product-form/products-form.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
-import { UsersService } from '@tejb/users';
+import { AuthGuardService, JwtIntercepterInterceptor, UsersModule, UsersService } from '@tejb/users';
 import { UsersFormComponent } from './users/users-form/users-form.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './orders/orders-details/orders-details.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { NgxStripeModule } from 'ngx-stripe';
 
 
 const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    canActivate:[AuthGuardService],
     children: [
       {
         path: 'dashboard',
@@ -99,13 +103,19 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     HttpClientModule,
     FormsModule,
     AngularEditorModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
+    UsersModule,
+    NgxStripeModule.forRoot('pk_test_51KzHLhSF0RHvnjsw3FjpDEHDT8w2h4i0wE0YIcwMQysUu6xcC5U2cnysGkKvkd3nIF74slu06nGUbZ2uggrsM8a500oxfdHP44')
+
   ],
-  providers: [CategoriesService, UsersService,],
+  providers: [CategoriesService, UsersService,
+  {provide: HTTP_INTERCEPTORS, useClass: JwtIntercepterInterceptor, multi:true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

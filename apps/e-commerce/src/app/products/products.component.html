@@ -1,5 +1,5 @@
-<body>
-    <div class="container1" *ngIf="product">
+<body *ngIf="product">
+    <div class="container1" >
       <div class="flex-container-main">
         <div class="flex-container">
           <div class="serial" >
@@ -16,12 +16,12 @@
         </div>
         <div class="cart-button">
           <div class="ctb">
-            <div class="button"><input type="button"  value="Add to Cart" /></div>
+            <div class="button"><input type="button"  value="Add to Cart"  (click)="addToCart()"/></div>
             <div class="button"><input type="button"  value="Buy Now" /></div>
           </div>
         </div>
       </div>
-      <div class="col-r">
+      <div class="col-r sidebar">
         <h2 style="margin: 0px">{{product.name}}</h2>
   
         <p><b>P R O D R U C T F E A T U R E S:</b></p>
@@ -30,7 +30,12 @@
   
 
         <p>{{product.description}}</p>
-        <p><b>R E V I E W S :</b></p>
+
+
+        <p style="display: inline-block;
+        font-size: x-large;
+        font-style: italic;
+        font-weight: 400;">{{product.price | currency:'INR' }}</p>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. A voluptates
           sed reiciendis fugiat, non officia dolores nesciunt rem. Nobis qui
@@ -45,5 +50,8 @@
         </p>
       </div>
     </div>
+    <div
+     [innerHtml]="product.richDescription"></div>
+     
   </body>
   

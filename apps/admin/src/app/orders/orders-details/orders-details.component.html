@@ -1,13 +1,11 @@
 <div class="admin-main" *ngIf="orders">
   <div
-      *ngIf="updated"
-      class="alert alert-success alert-dismissible fade show"
-      role="alert"
-    >
-      <strong
-        ><i class="bi bi-check-circle-fill"></i>Updated Status</strong
-      >
-    </div>
+    *ngIf="updated"
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong><i class="bi bi-check-circle-fill"></i>Updated Status</strong>
+  </div>
   <div class="card">
     <h4>View Order</h4>
     <div class="card-body">
@@ -30,12 +28,12 @@
 
       <div class="row">
         <div class="col">
-          <label for="id">Oder Id</label>
+          <label for="id">Order Id</label>
           <p>{{ orders.id }}</p>
           <p></p>
         </div>
         <div class="col">
-          <label for="date">Oder Date</label>
+          <label for="date">Order Date</label>
           <p>{{ orders.dateOrdered | date: 'short' }}</p>
         </div>
         <div class="col">
@@ -45,10 +43,15 @@
 
         <div class="row">
           <div class="col">
-          <select [(ngModel)]="selectedStatus" (change)="onStatusChange($event)">
-            <option *ngFor="let item of orderStatuses" [value]="item.value"> {{item.viewValue}}</option>
-          </select>
-          <p>You selected: {{selectedStatus}}</p>
+            <select
+              [(ngModel)]="selectedStatus"
+              (change)="onStatusChange($event)"
+            >
+              <option *ngFor="let item of orderStatuses" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+            <p>You selected: {{orderStatuses[selectedStatus].name  }}</p>
           </div>
         </div>
       </div>
@@ -86,7 +89,7 @@
 
       <div class="row">
         <div class="col">
-          <label for="id">Oder Address</label>
+          <label for="id">Order Address</label>
           <p>
             {{ orders.shippingAddress1 }}<br />
             {{ orders.shippingAddress2 }}<br />
@@ -105,7 +108,7 @@
 
         <div class="row">
           <div class="col">
-            <label for="id">Oder Status</label>
+            <label for="id">Order Status</label>
             <p>{{ orders.status }}</p>
           </div>
         </div>

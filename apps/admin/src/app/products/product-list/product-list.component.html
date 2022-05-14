@@ -41,7 +41,7 @@
             <td>{{ item.countInStock }}</td>
             <td class="small">{{ item.description }}</td>
             <td>{{ item.richDescription }}</td>
-            <td>{{ item.datecreated | date:'short' }}</td>
+            <td>{{ item.dateCreated | date:'short' }}</td>
             <td>
               <button
                 (click)="deleteProduct(item.id)"

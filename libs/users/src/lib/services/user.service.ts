@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { UsersFacade } from '../state/users.facade';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { User } from '../models/user';
 export class UsersService {
   apiURLUsers = environment.apiURL + 'users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userFacade: UsersFacade) {}
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiURLUsers);
@@ -31,5 +32,17 @@ export class UsersService {
 
   deleteUser(userId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiURLUsers}/${userId}`);
+  }
+
+  initAppSession(){
+    this.userFacade.buildUserSession();
+  }
+
+  observeCurrentUser(){
+    return this.userFacade.currentUser$;
+  }
+
+  isCurrentUserAuth(){
+    return this.userFacade.isAuthenticated$;
   }
 }

@@ -1,0 +1,87 @@
+<body>
+  <div class="container">
+    <button class="backToCart" (click)="backToCart()"><i class="bi bi-arrow-left-circle">Back To Cart</i></button>
+    <div class="summary">
+      <tejb-checkout></tejb-checkout>
+    </div>
+    <h1>Shipping Details</h1>
+    <div class="parent">
+      <div class="flex">
+        <form
+          [formGroup]="checkoutFormGroup"
+          class="row g-3 needs-validation"
+          novalidate
+        >
+          <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Street</label>
+            <input
+              formControlName="street"
+              type="text"
+              class="form-control"
+              id="validationCustom01"
+              required
+            />
+            <div class="invalid-feedback">Please choose a street name.</div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Apartment</label>
+            <input
+              formControlName="apartment"
+              type="text"
+              class="form-control"
+              id="validationCustom02"
+              required
+            />
+            <div class="invalid-feedback">Please choose a apartment name.</div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">City</label>
+            <input
+              formControlName="city"
+              type="text"
+              class="form-control"
+              id="validationCustom02"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid city.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Country</label>
+            <input
+              formControlName="country"
+              type="text"
+              class="form-control"
+              id="validationCustom03"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid Country.</div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Zip</label>
+            <input
+              formControlName="zip"
+              type="text"
+              class="form-control"
+              id="validationCustom05"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Phone</label>
+            <input
+              formControlName="phone"
+              type="text"
+              class="form-control"
+              id="validationCustom05"
+              required
+            />
+            <div class="invalid-feedback">Please provide a phone number.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button class="place-order" (click)="placeOrder()">Place Order</button>
+
+  </div>
+</body>

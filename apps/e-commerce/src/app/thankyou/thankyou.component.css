@@ -1,0 +1,9 @@
+.backToShop{
+    border-color: tomato;
+    background-color: tomato;
+    border-radius: 6px;
+}
+
+button:hover{
+    background-color: red;
+}

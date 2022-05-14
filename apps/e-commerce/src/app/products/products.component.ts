@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem, CartService } from '@tejb/orders';
 import { Product, ProductsService } from '@tejb/products';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -9,12 +10,13 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  product:Product;
+ @Input() product:Product;
   endSub$:Subject<boolean>= new Subject();
   selectedImg:string;
   constructor(
     private productService:ProductsService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
     
     )
 
+  }
+
+  addToCart(){
+    const cartItem: CartItem={
+      productId: this.product.id,
+      quantity: 1
+    };
+    this.cartService.setCartItem(cartItem);
   }
 
   ngOnDestroy(): void {
