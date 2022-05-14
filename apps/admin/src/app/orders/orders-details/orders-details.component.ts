@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Order, OrdersService } from '@tejb/orders';
+import { Order, OrdersService, ORDER_STATUS } from '@tejb/orders';
 import { timer } from 'rxjs';
 import { Location } from '@angular/common';
 // import { Observable } from 'rxjs';
 // import { ORDER_STATUS } from '../order.constants';
-
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -13,22 +12,13 @@ import { Location } from '@angular/common';
   templateUrl: './orders-details.component.html',
   styleUrls: ['./orders-details.component.css'],
 })
-
 export class OrdersDetailsComponent implements OnInit {
   orders: Order;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  selectedStatus: string;
+  selectedStatus: number;
   updated = false;
-  orderStatuses: Status[] = [
-    {value: 'pending', viewValue: 'Pending'},
-    {value: 'processed', viewValue: 'Processed'},
-    {value: 'shipped', viewValue: 'Shipped'},
-    {value: 'delivered', viewValue: 'Delivered'},
-    {value: 'failed', viewValue: 'Failed'},
-  ];
- 
+  orderStatuses= [];
 
-  
   constructor(
     private orderService: OrdersService,
     private location: Location,
@@ -36,11 +26,9 @@ export class OrdersDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this._mapOrderStatus();
     this._getOrder();
-     this.selectedStatus='shipped';
   }
-  
-  
 
   private _getOrder() {
     this.route.params.subscribe((params) => {
@@ -48,34 +36,32 @@ export class OrdersDetailsComponent implements OnInit {
         this.orderService.getOrder(params.id).subscribe((orders) => {
           this.orders = orders;
           this.selectedStatus = orders.status;
-          
         });
       }
-      
     });
-    
   }
 
-onStatusChange(e){
-  this.orderService
-   .updateOrder({ status: e.target.value },  this.orders.id).subscribe((order)=>
-   {
-    this.updated = true;
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      timer(2000)
-        .toPromise()
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        .then((_done) => {
-          this.location.back();
-        });
-    console.log(order);
-    console.log(e.target.value);
-   });
-  
-}
-}
+  private _mapOrderStatus() {
+    this.orderStatuses = Object.keys(ORDER_STATUS).map((key) => {
+      return {
+        id: key,
+        name: ORDER_STATUS[key].label
+      };
+    });
+  }
 
-interface Status {
-  value: string;
-  viewValue: string;
+  onStatusChange(event) {
+    this.orderService
+      .updateOrder({ status: event.target.value }, this.orders.id)
+      .subscribe((order) => {
+        this.updated = true;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        timer(2000)
+          .toPromise()
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .then((_done) => {
+            this.location.back();
+          });
+      });
+  }
 }

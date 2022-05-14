@@ -52,7 +52,12 @@
         <a href="#"><i class="bi bi-person-fill"> Sign in</i></a>
       </li>
       <li class="adjust-width">
-        <a href="#"><i class="bi bi-cart-plus"> Cart</i></a>
+        <a routerLink="/cart"><button type="button" class="btn position-relative">
+          <i class="bi bi-cart-plus">Cart</i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{cartCount}}
+          </span>
+        </button></a>
       </li>
     </ul>
   </div>

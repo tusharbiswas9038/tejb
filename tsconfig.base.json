@@ -15,11 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env/*": ["environments/*"],
       "@tejb/orders": ["libs/orders/src/index.ts"],
       "@tejb/products": ["libs/products/src/index.ts"],
       "@tejb/ui": ["libs/ui/src/index.ts"],
-      "@tejb/users": ["libs/users/src/index.ts"],
-      "@env/*": ["environments/*"]
+      "@tejb/users": ["libs/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

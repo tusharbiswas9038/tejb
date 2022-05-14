@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '@tejb/orders';
 
 @Component({
   selector: 'tejb-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
  press:boolean;
-  constructor() { }
-
+  constructor(private cartService:CartService) { }
+  cartCount=0;
   ngOnInit(): void {
+    this.cartService.cart$.subscribe((cart)=>{
+      this.cartCount= cart?.items.length ?? 0;
+    })
+    
     this.press=true;
     document.getElementById("inPut").style.visibility = "hidden";
   }

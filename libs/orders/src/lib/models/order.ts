@@ -4,15 +4,21 @@ import { User } from '@tejb/users';
 
 export class Order {
   id?: string;
-  orderItems?: OrderItem;
+  orderItems?: any;
   shippingAddress1?: string;
   shippingAddress2?: string;
   city?: string;
   zip?: string;
   country?: string;
   phone?: string;
-  status?: string;
+  status?: number;
   totalPrice?: string;
-  user?: User;
+  user?: any;
   dateOrdered?: string;
+}
+
+
+export interface Status {
+  value: string;
+  viewValue: string;
 }
