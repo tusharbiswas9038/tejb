@@ -1,8 +1,12 @@
 .wrapper {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-  }
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.active{
+ background: #0a58ca;
+ 
+} 
   .admin-main {
     width: calc(100% - 175px);
     margin-left: 175px;
@@ -23,9 +27,6 @@
      .logo  img {
         max-width:100%;
       }
-
-
-
       .links ul {
         margin: 0;
         padding: 0;
@@ -42,35 +43,9 @@
             width: 100%;
             text-decoration: none;
         }
-
-
         .links li:hover {
               background-color: #19487b;
               width: fit-content;
             }
+            
 
-            admin-sidebar.active {
-              color: #45af7f;
-            }
-
-
-
-            .logout{
-              color: #4a97e9;
-            }
-
- 
-/* .admin-page {
-  padding: 15px;
-  &-header {
-    .title {
-    }
-    .actions {
-      text-align: right;
-    }
-  }
-
-  .p-fieldset {
-    margin-bottom: 15px;
-  }
-} */

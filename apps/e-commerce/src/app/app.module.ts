@@ -21,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { NgToastModule } from 'ng-angular-popup'
 
 const routes: Routes = [
   {
@@ -75,6 +76,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     OrdersModule,
     UsersModule,
+    NgToastModule,
     NgxStripeModule.forRoot('pk_test_51KzHLhSF0RHvnjsw3FjpDEHDT8w2h4i0wE0YIcwMQysUu6xcC5U2cnysGkKvkd3nIF74slu06nGUbZ2uggrsM8a500oxfdHP44')
   ],
   providers: [],

@@ -23,7 +23,9 @@
         </li>
       </div>
 
-      <li class="adjust-width" id="hover"><a routerLink="/accessories">Accessories</a></li>
+      <li class="adjust-width" id="hover">
+        <a routerLink="/accessories">Accessories</a>
+      </li>
     </ul>
   </div>
   <div class="blank"></div>
@@ -32,18 +34,17 @@
       <li class="adjust-width">
         <div class="flex">
           <input
-          id="inPut"
+            id="inPut"
             type="text"
             class="form-control"
             placeholder="Find Products"
             aria-label="Find Products"
-            aria-describedby="button-addon2"   
+            aria-describedby="button-addon2"
           />
           <button
-            class="btn bi-search btn2"
+            class="btn bi-search btn2 sizing"
             type="button"
             id="button-addon2"
-            
             (click)="cons()"
           ></button>
         </div>
@@ -52,12 +53,16 @@
         <a href="#"><i class="bi bi-person-fill"> Sign in</i></a>
       </li>
       <li class="adjust-width">
-        <a routerLink="/cart"><button type="button" class="btn position-relative">
-          <i class="bi bi-cart-plus">Cart</i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{cartCount}}
-          </span>
-        </button></a>
+        <a routerLink="/cart"
+          ><button type="button" class="btn position-relative">
+            <i class="bi bi-cart-plus sizing">Cart</i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              {{ cartCount }}
+            </span>
+          </button></a
+        >
       </li>
     </ul>
   </div>

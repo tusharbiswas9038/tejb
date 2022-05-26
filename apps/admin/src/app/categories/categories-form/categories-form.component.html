@@ -9,8 +9,8 @@
     <strong><i class="bi bi-check-circle-fill"></i>Successfully updated</strong>
   </div>
   <div class="card-body">
-    <h5 *ngIf="editmode" class="card-title">You can edit caregories here</h5>
-    <h5 *ngIf="!editmode" class="card-title">You can add caregories here</h5>
+    <h5 *ngIf="editmode" class="card-title text-muted">You can edit caregories here</h5>
+    <h5 *ngIf="!editmode" class="card-title text-muted">You can add caregories here</h5>
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group me-2" role="group" aria-label="First group">
         <button *ngIf="editmode" type="button" class="btn btn-success" (click)="onSubmit()">Update</button>

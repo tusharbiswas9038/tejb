@@ -5,23 +5,21 @@
   <div class="links">
     <ul>
       <li>
-        <a routerLink="/dashboard"><i class="bi bi-house-door-fill"></i> Dashboard</a>
+        <a routerLink="/"><i class="bi bi-house-door"></i> Dashboard</a>
       </li>
-      <li>
+      <li [routerLinkActive]="'active'" >
         <a routerLink="/products"><i class="bi bi-basket"></i> Products</a>
       </li>
-      <li>
+      <li [routerLinkActive]="'active'" >
         <a routerLink="/Categories"><i class="bi bi-card-list"></i> Categories</a>
       </li>
-      <li>
+      <li [routerLinkActive]="'active'" >
         <a routerLink="/orders"><i class="bi bi-cart3"></i> Orders</a>
       </li>
-      <li>
+      <li [routerLinkActive]="'active'" >
         <a routerLink="/users"><i class="bi bi-people"></i> Users</a>
       </li>
-
       <li class="logout">
-
           <a (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
 
       </li>

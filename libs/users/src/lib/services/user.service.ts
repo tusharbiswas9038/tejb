@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'; 
 import { User } from '../models/user';
 import { UsersFacade } from '../state/users.facade';
 
@@ -44,5 +45,10 @@ export class UsersService {
 
   isCurrentUserAuth(){
     return this.userFacade.isAuthenticated$;
+  }
+  getUsersCount(): Observable<number> {
+    return this.http
+      .get<number>(`${this.apiURLUsers}/get/count`)
+      .pipe(map((objectValue: any) => objectValue.userCount));
   }
 }
