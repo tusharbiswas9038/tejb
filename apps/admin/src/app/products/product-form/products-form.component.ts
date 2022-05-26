@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Location } from '@angular/common';
@@ -17,6 +18,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 export class ProductsFormComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
+  url=[];
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   created: boolean = false;
   updated = false;
@@ -24,6 +26,7 @@ export class ProductsFormComponent implements OnInit {
   currentProductId: string;
   categories= [];
   imageDisplay: string | ArrayBuffer;
+  imagesDisplay: string | ArrayBuffer;
 
   
   name = 'Angular 6';
@@ -60,7 +63,7 @@ export class ProductsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this._initForm();
-    this._getCategories();
+    this._getCategories(); 
     this._checkEditMode();
     }
     private _initForm(){
@@ -73,6 +76,7 @@ export class ProductsFormComponent implements OnInit {
         description: ['', Validators.required],
         richDescription: [''],
         image: ['', Validators.required],
+        images:[''],
         isFeatured: [false]
       })
     }
@@ -114,10 +118,14 @@ export class ProductsFormComponent implements OnInit {
             this.productform.countInStock.setValue(product.countInStock);
             this.productform.isFeatured.setValue(product.isFeatured);
             this.productform.description.setValue(product.description);
-            this.productform.richDescription.setValue(product.richDescription);
+            this.productform.richDescription.setValue(product.richDescription); 
             this.imageDisplay = product.image;
             this.productform.image.setValidators([]);
             this.productform.image.updateValueAndValidity();
+            this.productform.images.setValue(product.images);
+            this.url.push(product.images);
+            this.productform.images.setValidators([]);
+            this.productform.images.updateValueAndValidity();
           });
         }
       });
@@ -154,13 +162,42 @@ export class ProductsFormComponent implements OnInit {
       fileReader.readAsDataURL(file);
     }
   }
+  // onMultipleImageUpload(event) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     for(let i=0; i<=File.length; i++){
+  //     this.form.patchValue({ images: file });
+  //     this.form.get('images').updateValueAndValidity();
+  //     const fileReader = new FileReader();
+  //     fileReader.onload = () => {
+  //       this.imagesDisplay = fileReader.result;
+  //     };
+  //     fileReader.readAsDataURL(file);
+  //   }
+  // }}
+  onMultipleImageUpload(e){
+    console.log(e);
+  
+    if(e.target.files){
+      for(let i=0; i<e.target.files.length; i++){
+        // console.log(e.target.files.length);
+               
+        this.form.patchValue({ images: this.url[i]});
+        console.log(this.url[i]);
+        this.form.get('images').updateValueAndValidity();
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(e.target.files[i]);
+        fileReader.onload = (events:any) => {
+          this.url.push(events.target.result);
+          // this.imagesDisplay = fileReader.result;
+        };
+        
+      }
+    }    
+  }
+
   get productform() {
     return this.form.controls;
   }
-
-
-  
-
-
 
 }

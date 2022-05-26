@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CartItem, CartService } from '@tejb/orders';
 import { Product, ProductsService } from '@tejb/products';
 import { Subject, takeUntil } from 'rxjs';
+// import { timer } from 'rxjs';
+import { Location } from '@angular/common';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'tejb-products',
@@ -13,9 +17,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
  @Input() product:Product;
   endSub$:Subject<boolean>= new Subject();
   selectedImg:string;
+  addedToCart= false;
   constructor(
     private productService:ProductsService,
     private route:ActivatedRoute,
+    private location: Location,
+    private toast: NgToastService,
     private cartService: CartService
   ) { }
 
@@ -24,10 +31,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
       if(params.productid){
         this._getProduct(params.productid);
       }
-    }
-    
+    }    
     )
-
+  }
+  showSuccess() {
+    this.toast.success({detail:"SUCCESS",summary:'Product added', duration:2000});
   }
 
   addToCart(){
@@ -36,6 +44,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
       quantity: 1
     };
     this.cartService.setCartItem(cartItem);
+    this.addedToCart= true;
+    this.showSuccess();
   }
 
   ngOnDestroy(): void {

@@ -22,7 +22,7 @@ export class CartService {
 }
 
   getCart():Cart{
-    const cartJsonString: string = localStorage.getItem('cart') ?? "";
+    const cartJsonString: string = localStorage.getItem('cart') ;
     const cart: Cart = JSON.parse(cartJsonString);
     return cart;
   }

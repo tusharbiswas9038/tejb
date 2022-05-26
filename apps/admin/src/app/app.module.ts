@@ -34,7 +34,7 @@ const routes: Routes = [
     canActivate:[AuthGuardService],
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
       },
       {
@@ -83,6 +83,11 @@ const routes: Routes = [
       }
     ],
   },
+  {
+    path:'**',
+    redirectTo:'',
+    pathMatch: 'full'
+  }
 ];
 @NgModule({
   declarations: [
