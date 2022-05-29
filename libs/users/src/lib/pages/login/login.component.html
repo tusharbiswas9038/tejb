@@ -3,6 +3,11 @@
     <div class="center">
       <div class="center-block">
         <div class="align">
+          <h3 style="
+    text-align: center;
+    margin-bottom: 100px;
+    font-family: cursive;
+">Welcome to TEJB</h3>
           <form [formGroup]="loginFormGroup">
             <div class="row mb-3">
               <label for="inputEmail3" class="col-sm-2 col-form-label"
@@ -20,7 +25,7 @@
                   *ngIf="loginForm.email.invalid && isSubmitted"
                   class="form-control is-invalid"
                 >
-                  <span *ngIf="loginForm.email.errors.required">
+                  <span *ngIf="loginForm['email'].errors.required">
                     enter email id</span
                   >
                   <span *ngIf="loginForm.email.errors.email">
@@ -46,7 +51,7 @@
                   *ngIf="loginForm.password.invalid && isSubmitted"
                   class="form-control is-invalid"
                 >
-                  PLease enter password
+                  Please enter password
                   <div class="invalid-feedback"></div>
                 </small>
               </div>

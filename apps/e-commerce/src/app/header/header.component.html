@@ -8,7 +8,7 @@
       <div class="dropdown">
         <li>Desktops</li>
         <div class="dropdown-content">
-          <a>Gaming Desktops</a>
+          <a routerLink="/gaming-desktop">Gaming Desktops</a>
           <a href="#">Workstation Desktops</a>
           <a href="#">Office Use Desktops</a>
         </div>
@@ -17,7 +17,7 @@
         <li>
           Laptops
           <div class="dropdown-content">
-            <a href="#">Gaming Laptops</a>
+            <a routerLink="/gaming-laptop">Gaming Laptops</a>
             <a href="#">Office Use Laptops</a>
           </div>
         </li>
@@ -50,7 +50,7 @@
         </div>
       </li>
       <li class="adjust-width">
-        <a href="#"><i class="bi bi-person-fill"> Sign in</i></a>
+        <a (click)="isLogin()" class="pointer"><i class="bi bi-person-fill"> {{isSign}}</i></a>
       </li>
       <li class="adjust-width">
         <a routerLink="/cart"

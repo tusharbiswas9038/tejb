@@ -31,7 +31,7 @@
           <div class="button">
             <input type="button" value="Add to Cart" (click)="addToCart()" />
           </div>
-          <div class="button"><input type="button" value="Buy Now" /></div>
+          <div class="button"><input type="button" value="Buy Now" (click)="addToCart()" routerLink="/cart"/></div>
         </div>
       </div>
     </div>

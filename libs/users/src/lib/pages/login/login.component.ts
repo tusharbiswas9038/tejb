@@ -11,7 +11,7 @@ import { LocalstorageService } from '../../services/localstorage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup;
+  loginFormGroup!: FormGroup;
   isSubmitted= false;
   authError= false;
   errorString = 'Internal Server Error';
@@ -30,12 +30,16 @@ export class LoginComponent implements OnInit {
   
   onSubmit(){
     this.isSubmitted = true;
-  if(this.loginForm.email.invalid) return;
+  if(this.loginForm['email'].invalid) return;
   
-    this.auth.login(this.loginForm.email.value, this.loginForm.password.value).subscribe((user)=>{
+    this.auth.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe((user)=>{
       this.localStorageService.setToken(user.token ?? '')
       this.authError=false;
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/').then(() => {
+        window.location.reload();
+      });;
+     // window.location.assign(window.location.hostname + '/');
+     
     },(error: HttpErrorResponse)=>{
       this.authError = true;
       if(error.status === 400){

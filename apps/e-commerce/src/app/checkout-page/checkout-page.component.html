@@ -21,7 +21,13 @@
               id="validationCustom01"
               required
             />
-            <div class="invalid-feedback">Please choose a street name.</div>
+            <small
+          *ngIf="checkoutForm.street.invalid && isSubmitted"
+          class="form-control is-invalid"
+        >
+          PLease enter your street name
+          <div class="invalid-feedback"></div>
+        </small>
           </div>
           <div class="col-md-4">
             <label for="validationCustom02" class="form-label">Apartment</label>
@@ -32,7 +38,13 @@
               id="validationCustom02"
               required
             />
-            <div class="invalid-feedback">Please choose a apartment name.</div>
+            <small
+          *ngIf="checkoutForm.apartment.invalid && isSubmitted"
+          class="form-control is-invalid"
+        >
+          PLease enter your apartment name
+          <div class="invalid-feedback"></div>
+        </small>
           </div>
           <div class="col-md-4">
             <label for="validationCustom02" class="form-label">City</label>
@@ -43,7 +55,13 @@
               id="validationCustom02"
               required
             />
-            <div class="invalid-feedback">Please provide a valid city.</div>
+            <small
+          *ngIf="checkoutForm.city.invalid && isSubmitted"
+          class="form-control is-invalid"
+        >
+          PLease enter your city name
+          <div class="invalid-feedback"></div>
+        </small>
           </div>
           <div class="col-md-6">
             <label for="validationCustom03" class="form-label">Country</label>
@@ -54,7 +72,13 @@
               id="validationCustom03"
               required
             />
-            <div class="invalid-feedback">Please provide a valid Country.</div>
+            <small
+          *ngIf="checkoutForm.country.invalid && isSubmitted"
+          class="form-control is-invalid"
+        >
+          PLease enter your country name
+          <div class="invalid-feedback"></div>
+        </small>
           </div>
           <div class="col-md-3">
             <label for="validationCustom05" class="form-label">Zip</label>
@@ -65,7 +89,13 @@
               id="validationCustom05"
               required
             />
-            <div class="invalid-feedback">Please provide a valid zip.</div>
+            <small
+          *ngIf="checkoutForm.zip.invalid && isSubmitted"
+          class="form-control is-invalid"
+        >
+          PLease enter your zip code
+          <div class="invalid-feedback"></div>
+        </small>
           </div>
           <div class="col-md-3">
             <label for="validationCustom05" class="form-label">Phone</label>
@@ -76,7 +106,13 @@
               id="validationCustom05"
               required
             />
-            <div class="invalid-feedback">Please provide a phone number.</div>
+            <small
+          *ngIf="checkoutForm.phone.invalid && isSubmitted"
+          class="form-control is-invalid"
+        >
+          PLease enter your phone number
+          <div class="invalid-feedback"></div>
+        </small>
           </div>
         </form>
       </div>

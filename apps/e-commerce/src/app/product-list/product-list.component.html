@@ -22,7 +22,7 @@
           {{item.name}}
         </h5>
         <h6>{{item.price | currency:"INR"}}</h6>
-        <button type="button" class="btn btn-outline-danger">Buy Now</button>
+        <button type="button" class="btn btn-outline-danger" (click)="addToCart(item.id)" routerLink="/cart">Buy Now</button>
     </div>
     </div>
 </div>

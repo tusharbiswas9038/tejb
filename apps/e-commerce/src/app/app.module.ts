@@ -21,7 +21,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { NgxStripeModule } from 'ngx-stripe';
-import { NgToastModule } from 'ng-angular-popup'
+import { NgToastModule } from 'ng-angular-popup';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { GamingDesktopComponent } from './gaming-desktop/gaming-desktop.component';
+import { GamingLaptopsComponent } from './gaming-laptops/gaming-laptops.component'
 
 const routes: Routes = [
   {
@@ -47,6 +51,22 @@ const routes: Routes = [
     component: CheckoutPageComponent,
   },
   {
+    path: 'contact-us',
+    component: ContactUsComponent,
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent,
+  },
+  {
+    path: 'gaming-desktop',
+    component: GamingDesktopComponent,
+  },
+  {
+    path: 'gaming-laptop',
+    component: GamingLaptopsComponent,
+  },
+  {
     path: 'thankyou',
     component: ThankyouComponent,
   },
@@ -64,6 +84,10 @@ const routes: Routes = [
     CheckoutComponent,
     CheckoutPageComponent,
     ThankyouComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    GamingDesktopComponent,
+    GamingLaptopsComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +109,11 @@ const routes: Routes = [
     CartPageComponent,
     CheckoutComponent,
     CheckoutPageComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    GamingDesktopComponent,
+    GamingLaptopsComponent
   ],
 })
 export class AppModule {}

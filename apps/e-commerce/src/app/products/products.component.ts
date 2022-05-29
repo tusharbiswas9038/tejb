@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CartItem, CartService } from '@tejb/orders';
 import { Product, ProductsService } from '@tejb/products';
 import { Subject, takeUntil } from 'rxjs';
-// import { timer } from 'rxjs';
-import { Location } from '@angular/common';
 import { NgToastService } from 'ng-angular-popup';
 
 
@@ -21,7 +19,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(
     private productService:ProductsService,
     private route:ActivatedRoute,
-    private location: Location,
     private toast: NgToastService,
     private cartService: CartService
   ) { }
