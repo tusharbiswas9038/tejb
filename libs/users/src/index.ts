@@ -9,3 +9,5 @@ export * from './lib/models/user';
 export * from './lib/services/auth-guard.service';
 export * from './lib/services/jwt-intercepter.interceptor';
 export * from './lib/services/auth.service';
+export * from './lib/services/role-guard.guard';
+export * from './lib/services/localstorage.service';

@@ -1,7 +1,9 @@
 <body>
   <div class="container">
     <h1>Items in Your Bag</h1>
-    
+    <div *ngIf="cartItemDetailed.length === 0">
+      <img src="/assets/images/no-product-found.png" alt="">
+    </div>
     <div class="cart" *ngFor="let items of cartItemDetailed">
       <div class="products" *ngIf="cartItemDetailed">
         <div class="product">

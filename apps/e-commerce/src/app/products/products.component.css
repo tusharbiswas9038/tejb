@@ -42,7 +42,7 @@ body {
   .main img{
       margin-top: 25%;
       height: 255px;
-      max-width: 350px;
+      width: 350px;
   }
   .col-r {
       padding-left: 10px;

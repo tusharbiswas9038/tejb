@@ -29,9 +29,14 @@ export class ProductsService {
   getProduct(productId: string): Observable<Product> {
     return this.http.get<Product>(`${this.apiURLProducts}/${productId}`);
   }
-
+  getProductSelected(productId: string[]): Observable<Product> {
+    return this.http.get<Product>(`${this.apiURLProducts}/${productId}`);
+  }
   updateProduct(productData: FormData, productid: string): Observable<Product> {
     return this.http.put<Product>(`${this.apiURLProducts}/${productid}`, productData);
+  }
+  updateimages(productData: FormData, productid: string): Observable<Product> {
+    return this.http.put<Product>(`${this.apiURLProducts}/gallery/${productid}`, productData);
   }
 
   deleteProduct(productId: string): Observable<any> {

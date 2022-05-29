@@ -18,7 +18,8 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 export class ProductsFormComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
-  url=[];
+  url:string[];
+  imagesUpdate  = false;
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   created: boolean = false;
   updated = false;
@@ -26,7 +27,7 @@ export class ProductsFormComponent implements OnInit {
   currentProductId: string;
   categories= [];
   imageDisplay: string | ArrayBuffer;
-  imagesDisplay: string | ArrayBuffer;
+  imagesDisplay: Array<string> | ArrayBuffer;
 
   
   name = 'Angular 6';
@@ -105,6 +106,17 @@ export class ProductsFormComponent implements OnInit {
           this.location.back();
         });
     }
+    private _updateImages(productFormData: FormData){
+      this.productsService.updateimages(productFormData, this.currentProductId).subscribe();
+      this.updated = true;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      timer(2000)
+        .toPromise()
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .then((_done) => {
+          this.location.back();
+        });
+    }
     private _checkEditMode() {
       this.route.params.subscribe((params) => {
         if (params.id) {
@@ -122,8 +134,10 @@ export class ProductsFormComponent implements OnInit {
             this.imageDisplay = product.image;
             this.productform.image.setValidators([]);
             this.productform.image.updateValueAndValidity();
-            this.productform.images.setValue(product.images);
-            this.url.push(product.images);
+          //  this.productform.images.setValue(product.images);
+            this.imagesDisplay = product.images;
+           // this.url.push(product.images);
+
             this.productform.images.setValidators([]);
             this.productform.images.updateValueAndValidity();
           });
@@ -141,7 +155,11 @@ export class ProductsFormComponent implements OnInit {
       productFormData.append(key,this.productform[key].value);
     });
     if(this.editmode){
-      this._updateProduct(productFormData)
+      if(this.imagesUpdate){
+        this._updateImages(productFormData)
+      }else{
+        this._updateProduct(productFormData)
+      }
     }else{
       this._addProduct(productFormData)
     }
@@ -163,37 +181,39 @@ export class ProductsFormComponent implements OnInit {
     }
   }
   // onMultipleImageUpload(event) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     for(let i=0; i<=File.length; i++){
-  //     this.form.patchValue({ images: file });
+  //   const files = event.target.files;
+  //   console.log(event);
+  //   if (files) { 
+  //     for(let i=0; i<=event.target.files.length; i++){
+  //     this.form.patchValue({ images: files });
   //     this.form.get('images').updateValueAndValidity();
   //     const fileReader = new FileReader();
   //     fileReader.onload = () => {
-  //       this.imagesDisplay = fileReader.result;
+  //       this.imagesDisplay[i] = fileReader.result;
   //     };
-  //     fileReader.readAsDataURL(file);
+  //     fileReader.readAsDataURL(files);
   //   }
   // }}
   onMultipleImageUpload(e){
-    console.log(e);
-  
+   // console.log(e);
     if(e.target.files){
       for(let i=0; i<e.target.files.length; i++){
         // console.log(e.target.files.length);
                
-        this.form.patchValue({ images: this.url[i]});
-        console.log(this.url[i]);
+        this.form.patchValue({ images:e.target.files[i]});
+       // console.log(this.url[i]);
         this.form.get('images').updateValueAndValidity();
         const fileReader = new FileReader();
-        fileReader.readAsDataURL(e.target.files[i]);
-        fileReader.onload = (events:any) => {
-          this.url.push(events.target.result);
-          // this.imagesDisplay = fileReader.result;
+        fileReader.onload = () => {
+         // this.url.push(e.target.result);
+          //console.log(this.url);
+          this.imagesDisplay[i] = fileReader.result;
+          
         };
-        
+        fileReader.readAsDataURL(e.target.files[i]);
       }
-    }    
+    }  
+    this.imagesUpdate=true;
   }
 
   get productform() {

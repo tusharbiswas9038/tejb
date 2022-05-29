@@ -17,7 +17,7 @@ import { CategoriesService } from '@tejb/products';
 import { ProductsListComponent } from './products/product-list/product-list.component';
 import { ProductsFormComponent } from './products/product-form/products-form.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
-import { AuthGuardService, JwtIntercepterInterceptor, UsersModule, UsersService } from '@tejb/users';
+import { AuthGuardService, JwtIntercepterInterceptor, UsersModule, UsersService, RoleGuardGuard } from '@tejb/users';
 import { UsersFormComponent } from './users/users-form/users-form.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './orders/orders-details/orders-details.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
-    canActivate:[AuthGuardService],
+    canActivate:[AuthGuardService, RoleGuardGuard],
     children: [
       {
         path: '',
