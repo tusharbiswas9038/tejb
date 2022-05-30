@@ -39,7 +39,11 @@ addedToCart= false;
   categoryfilter(){
     const selected=this.categories.filter(categories => categories.checked)
     .map(categories=>categories.id);
-    this._getProducts(selected);
+    if(selected.length === 0){
+      this._getProducts(this.selection);
+    }else{
+      this._getProducts(selected);
+    }
   }
   
   
