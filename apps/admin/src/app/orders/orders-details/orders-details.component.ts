@@ -53,7 +53,7 @@ export class OrdersDetailsComponent implements OnInit {
   onStatusChange(event) {
     this.orderService
       .updateOrder({ status: event.target.value }, this.orders.id)
-      .subscribe((order) => {
+      .subscribe(() => {
         this.updated = true;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         timer(2000)

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {  CanActivate, Router } from '@angular/router';
 import { LocalstorageService } from './localstorage.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { LocalstorageService } from './localstorage.service';
 export class AuthGuardService implements CanActivate {
 
   constructor(private router:Router, private localstoragetoken: LocalstorageService) { }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate() {
     const token = this.localstoragetoken.getToken();
     if(token){
       const tokenDecode = JSON.parse(atob(token.split('.')[1]));

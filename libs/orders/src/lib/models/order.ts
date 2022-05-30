@@ -1,6 +1,5 @@
-import { OrderItem } from './order-item';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { User } from '@tejb/users';
 
 export class Order {
   id?: string;

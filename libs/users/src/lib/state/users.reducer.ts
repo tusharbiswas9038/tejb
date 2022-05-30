@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createReducer, on, Action } from '@ngrx/store';
 import { User } from '../models/user';
 
