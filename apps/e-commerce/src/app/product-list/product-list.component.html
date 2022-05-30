@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
     <div class="col-3" id="filterDiv">
-        <h2>Filters</h2>
+        <h2>Filters</h2><hr>
        <div class="container"> 
            <div class="form-check" *ngFor="let item of categories" >
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="item.checked" (change)="categoryfilter()">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-9">
-        <h2>Products</h2>
+        <h2>Products</h2><hr>
     <div class="row" *ngIf="products">
     <div class="col-3" *ngFor="let item of products">
        <div class="wrapper">

@@ -103,11 +103,11 @@
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   color: #200f0f;
-  border: green solid 5px;
+  border: rgb(28, 0, 128) solid 5px;
   transition: 0.3s;
 }
 .dropdown:hover{
-  border: green solid 5px;
+  border: rgb(28, 0, 128) solid 5px;
   border-radius: 12px;
   transition: 0.3s;
 }
@@ -126,7 +126,7 @@
   box-shadow: none;
 }
 #hover:hover{
-  border: green solid 5px;
+  border: rgb(28, 0, 128) solid 5px;
   border-radius: 12px;
   transition: 0.3s;
 }
