@@ -1,3 +1,4 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { Product } from "@tejb/products";
 
 export class Cart {
