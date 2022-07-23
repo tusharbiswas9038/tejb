@@ -1,6 +1,6 @@
 {
   "projectType": "library",
-  "root": "libs/orders",
+  "root": ".",
   "sourceRoot": "libs/orders/src",
   "prefix": "orders",
   "targets": {
