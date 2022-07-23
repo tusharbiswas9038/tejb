@@ -1,6 +1,6 @@
 {
   "projectType": "library",
-  "root": "libs/users",
+  "root": ".",
   "sourceRoot": "libs/users/src",
   "prefix": "tejb",
   "targets": {

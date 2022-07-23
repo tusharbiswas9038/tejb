@@ -1,5 +1,5 @@
 {
-  "root": "libs/ui",
+  "root": ".",
   "sourceRoot": "libs/ui/src",
   "projectType": "library",
   "targets": {

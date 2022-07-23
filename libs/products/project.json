@@ -1,6 +1,6 @@
 {
   "projectType": "library",
-  "root": "libs/products",
+  "root": ".",
   "sourceRoot": "libs/products/src",
   "prefix": "tejb",
   "targets": {
