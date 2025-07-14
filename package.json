@@ -26,7 +26,7 @@
     "@ngrx/entity": "~13.0.0",
     "@ngrx/router-store": "~13.0.0",
     "@ngrx/store": "~13.0.0",
-    "@nrwl/angular": "13.5.3",
+    "@nrwl/angular": "15.9.3",
     "@popperjs/core": "^2.11.5",
     "@stripe/stripe-js": "^1.29.0",
     "bootstrap": "^5.1.3",
